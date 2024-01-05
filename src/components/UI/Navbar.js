@@ -11,10 +11,7 @@ const Header = () => {
                             <div className="container-fluid">
                                 <ul className="navbar-nav">
                                     <li className="nav-item">
-                                        <Link className="nav-link" to="/MasterForm">Master Form</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        
+                                        <Link className="nav-link" to="/RoomCreation">Room Creation</Link>
                                     </li>
                                 </ul>
                             </div>
