@@ -1,1 +1,1 @@
-export const GET_ALL_MASTER = "getAllMaster"
+export const GET_ALL_ROOM = "GetAllRoom";

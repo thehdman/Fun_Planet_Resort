@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Navbar from '../components/UI/Navbar'
-import MasterForm from '../components/Forms/MasterForm';
+import RoomCreation from '../pages/RoomCreation';
 
 const AppRoutes = () => {
     return (
@@ -9,7 +9,7 @@ const AppRoutes = () => {
             <BrowserRouter>
                 <Navbar></Navbar>
                 <Routes>
-                    <Route path='MasterForm' element={<MasterForm></MasterForm>}></Route>
+                    <Route path='RoomCreation' element={<RoomCreation></RoomCreation>}></Route>
                 </Routes>
             </BrowserRouter>
         </div>
