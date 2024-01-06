@@ -14,4 +14,13 @@ const showRoomData = async () => {
     }
 }
 
-export {showRoomData}
+
+const showServicesData = async () => {
+    const result = await axios.get(ApiUrl + Constant.Get_All_Service);
+   return result.data
+}
+export {showRoomData,showServicesData}
+
+// servicePage
+
+
