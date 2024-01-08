@@ -66,7 +66,7 @@ const editRoom = async (id) => {
 }
 
 
-const onDelete = async (obj) => {
+const onDeleteWedding = async (obj) => {
     const isDelte = window.confirm('Are You Sure want to Delete');
     if (isDelte) {
         const result = await axios.post(ApiUrl + Constant.DELETE_MASTER, obj);
@@ -107,13 +107,6 @@ const deleteRoom = async (obj) => {
 }
 
 
-const onDeleteWedding = async (obj) => {
-    const isDelte = window.confirm('Are You Sure want to Delete');
-    if (isDelte) {
-        const result = await axios.post(ApiUrl + Constant.DELETE_WEDDING, obj);
-        return result.data
-    }
-}
 
  
 export { showRoomData, showRoomTypeData, showRoomStatus, addRoomData, editRoom, deleteRoom,getWedding,addWeddingService,updateService,onDeleteWedding,getMasterList, addMaster, onDelete, updateMaster}
