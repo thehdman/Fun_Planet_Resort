@@ -5,9 +5,25 @@ import * as Constant from "./Constant"
 const ApiUrl = process.env.REACT_APP_API_KEY;
 
 const showRoomData = async () => {
+    const result = await axios.get(ApiUrl + Constant.GET_ALL_ROOM);
+    return result.data
+}
+
+const showRoomTypeData = async () => {
+    const result = await axios.get(ApiUrl + Constant.GET_MASTER_BY_STATOUS_ROOM_TYPE);
+    return result.data
+}
+
+const showRoomStatus = async () => {
+    const result = await axios.get(ApiUrl + Constant.GET_MASTER_BY_STATOUS_ROOM_STATUS);
+    return result.data
+}
+
+const addRoomData = async (obj) => {
+    debugger;
     try {
-        const result = await axios.get(ApiUrl + Constant.GET_ALL_ROOM);
-        return result.data
+        const result = await axios.post(ApiUrl + Constant.ADD_ROOM, obj);
+        return result.data;
     }
     catch (error) {
         alert(error.code)
@@ -36,9 +52,19 @@ const updateMaster = async (obj) => {
         const result = await axios.post(ApiUrl + Constant.UPDATE_MASTER, obj);
         return result.data
     } catch (error) {
+    }
+}
+
+const editRoom = async (id) => {
+    try {
+        const result = await axios.get(ApiUrl + Constant.EDIT_ROOM + id);
+        return result.data;
+    }
+    catch (error) {
         alert(error.code)
     }
 }
+
 
 const onDelete = async (obj) => {
     const isDelte = window.confirm('Are You Sure want to Delete');
@@ -69,9 +95,18 @@ const updateService = async (obj) => {
         const result = await axios.post(ApiUrl + Constant.UPDATE_WEDDING,obj);
         return result.data
     } catch (error) {
+    }
+}
+const deleteRoom = async (obj) => {
+    try {
+        const result = await axios.post(ApiUrl + Constant.DELETE_ROOM, obj);
+        return result.data
+    }
+    catch (error) {
         alert(error.code)
     }
 }
+
 
 const onDeleteWedding = async (obj) => {
     const isDelte = window.confirm('Are You Sure want to Delete');
@@ -81,6 +116,5 @@ const onDeleteWedding = async (obj) => {
     }
 }
 
-export { showRoomData}
-export {getMasterList, addMaster, onDelete, updateMaster} 
-export {getWedding,addWeddingService,updateService,onDeleteWedding}
+ 
+export { showRoomData, showRoomTypeData, showRoomStatus, addRoomData, editRoom, deleteRoom,getWedding,addWeddingService,updateService,onDeleteWedding,getMasterList, addMaster, onDelete, updateMaster}
