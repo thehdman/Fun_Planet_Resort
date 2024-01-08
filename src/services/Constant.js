@@ -1,13 +1,14 @@
 export const GET_ALL_ROOM = "GetAllRoom";
-export const GET_ALL_MASTER = "getAllMaster";
-export const ADD_MASTER = "addMaster";
-export const DELETE_MASTER = "deleteMaster";
-export const UPDATE_MASTER = "addMaster";
-
-export const GET_WEDDING = "GetweddingService";
-export const ADD_WEDDING = "AddweddingService";
-export const UPDATE_WEDDING = "AddweddingService";
-export const DELETE_WEDDING = "DeleteweddingService";
+export const GET_ALL_OFFER = "GetAllOffer";
+export const GET_ALL_BOOKING = "GetAllBookings";
+export const GET_ALL_SERVICE = "GetAllService";
+export const ADD_ALL_OFFER = "AddOffer";
+export const DELETE_ALL_OFFER = "DeleteOffer";
+export const UPADTE_ALL_OFFER = "AddOffer";
+export const EDIT_ALL_BOOKING = "GetBookingByBookingId?id=";
+export const ADD_ALL_BOOKING = "CreateUpdateBooking";
+export const DELETE_ALL_BOOKING = "DeleteBookingById?id=";
+export const UPADTE_ALL_BOOKING = "CreateUpdateBooking";
 
 
 export const GET_MASTER_BY_STATOUS_ROOM_TYPE = 'GetMasterByStatus?master=Room_Type';

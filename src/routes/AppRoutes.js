@@ -4,6 +4,8 @@ import Navbar from '../components/UI/Navbar'
 import RoomCreation from '../pages/RoomCreation';
 import Master from '../pages/Master';
 import WeddingService from '../pages/WeddingService';
+import Offer from '../pages/Offer';
+import Booking from '../pages/Booking';
 
 const AppRoutes = () => {
     return (
@@ -14,6 +16,8 @@ const AppRoutes = () => {
                     <Route path='RoomCreation' element={<RoomCreation></RoomCreation>}></Route>
                     <Route path='Master' element={<Master/>}></Route>
                     <Route path='WeddingService' element={<WeddingService/>}></Route>
+                    <Route path='Offer' element={<Offer></Offer>}></Route>
+                    <Route path='Booking' element={<Booking></Booking>}></Route>
                 </Routes>
             </BrowserRouter>
         </div>
