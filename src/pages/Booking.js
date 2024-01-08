@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import  {getAllBooking, getServiceList, onEditBooking, saveBooking, deleteBooking, updateBooking} from '../services/Api';
+import  {getAllBooking, getServiceListBooking, onEditBooking, saveBooking, deleteBooking, updateBooking} from '../services/Api';
 
 
 const Booking = () => {
@@ -47,7 +47,7 @@ const Booking = () => {
   }
 
   const showAllServiceBookingData = () => {
-    getServiceList().then((data) => {
+    getServiceListBooking().then((data) => {
       setServiceList(data);
       setIsLoader(false);
     })
@@ -64,18 +64,18 @@ const Booking = () => {
     })
   };
 
-  const changeFormValue = (event, key) => {
+  const changeFormValueBooking = (event, key) => {
     setBookingObj((prevObj) => ({ ...prevObj, [key]: event.target.value }));
   };
 
-  const changeCheckBoxValueFood = (event) => {
+  const changeCheckBoxValueFoodBooking = (event) => {
     setBookingObj((prevObj) => ({
       ...prevObj,
       isWithFood: event.target.checked,
     }));
   };
 
-  const changeCheckBoxValueConfirmed = (event) => {
+  const changeCheckBoxValueConfirmedBooking = (event) => {
     setBookingObj((prevObj) => ({
       ...prevObj,
       isConfirmed: event.target.checked,
@@ -221,7 +221,7 @@ const updateAllBookingData = () => {
                     className="form-select mt-2"
                     value={bookingObj.serviceId}
                     onChange={(event) => {
-                      changeFormValue(event, "serviceId");
+                      changeFormValueBooking(event, "serviceId");
                     }}
                   >
                     <option value="">Select Service</option>
@@ -241,7 +241,7 @@ const updateAllBookingData = () => {
                     type="text"
                     value={bookingObj.customerName}
                     onChange={(event) => {
-                      changeFormValue(event, "customerName");
+                      changeFormValueBooking(event, "customerName");
                     }}
                     className="form-control mt-2"
                   />
@@ -254,7 +254,7 @@ const updateAllBookingData = () => {
                     type="text"
                     value={bookingObj.mobileNo}
                     onChange={(event) => {
-                      changeFormValue(event, "mobileNo");
+                      changeFormValueBooking(event, "mobileNo");
                     }}
                     className="form-control mt-2"
                   />
@@ -265,7 +265,7 @@ const updateAllBookingData = () => {
                     type="text"
                     value={bookingObj.altMobNo}
                     onChange={(event) => {
-                      changeFormValue(event, "altMobNo");
+                      changeFormValueBooking(event, "altMobNo");
                     }}
                     className="form-control mt-2"
                   />
@@ -276,7 +276,7 @@ const updateAllBookingData = () => {
                     type="text"
                     value={bookingObj.noOfMembers}
                     onChange={(event) => {
-                      changeFormValue(event, "noOfMembers");
+                      changeFormValueBooking(event, "noOfMembers");
                     }}
                     className="form-control mt-2"
                   />
@@ -289,7 +289,7 @@ const updateAllBookingData = () => {
                     type="date"
                     value={bookingObj.creationDate}
                     onChange={(event) => {
-                      changeFormValue(event, "creationDate");
+                      changeFormValueBooking(event, "creationDate");
                     }}
                     className="form-control mt-2"
                   />
@@ -300,7 +300,7 @@ const updateAllBookingData = () => {
                     type="date"
                     value={bookingObj.bookingDate}
                     onChange={(event) => {
-                      changeFormValue(event, "bookingDate");
+                      changeFormValueBooking(event, "bookingDate");
                     }}
                     className="form-control mt-2"
                   />
@@ -311,7 +311,7 @@ const updateAllBookingData = () => {
                     type="checkbox"
                     checked={bookingObj.isWithFood}
                     onChange={(event) => {
-                      changeCheckBoxValueFood(event);
+                      changeCheckBoxValueFoodBooking(event);
                     }}
                   />
                 </div>
@@ -323,7 +323,7 @@ const updateAllBookingData = () => {
                     type="text"
                     value={bookingObj.totalAmount}
                     onChange={(event) => {
-                      changeFormValue(event, "totalAmount");
+                      changeFormValueBooking(event, "totalAmount");
                     }}
                     className="form-control mt-2"
                   />
@@ -334,7 +334,7 @@ const updateAllBookingData = () => {
                     type="text"
                     value={bookingObj.discount}
                     onChange={(event) => {
-                      changeFormValue(event, "discount");
+                      changeFormValueBooking(event, "discount");
                     }}
                     className="form-control mt-2"
                   />
@@ -345,7 +345,7 @@ const updateAllBookingData = () => {
                     type="text"
                     value={bookingObj.advanceAmount}
                     onChange={(event) => {
-                      changeFormValue(event, "advanceAmount");
+                      changeFormValueBooking(event, "advanceAmount");
                     }}
                     className="form-control mt-2"
                   />
@@ -358,7 +358,7 @@ const updateAllBookingData = () => {
                     type="checkbox"
                     checked={bookingObj.isConfirmed}
                     onChange={(event) => {
-                      changeCheckBoxValueConfirmed(event);
+                      changeCheckBoxValueConfirmedBooking(event);
                     }}
                   />
                 </div>
@@ -368,7 +368,7 @@ const updateAllBookingData = () => {
                     type="text"
                     value={bookingObj.remainingPaidAmount}
                     onChange={(event) => {
-                      changeFormValue(event, "remainingPaidAmount");
+                      changeFormValueBooking(event, "remainingPaidAmount");
                     }}
                     className="form-control mt-2"
                   />
@@ -378,7 +378,7 @@ const updateAllBookingData = () => {
                   <textarea
                     value={bookingObj.naration}
                     onChange={(event) => {
-                      changeFormValue(event, "naration");
+                      changeFormValueBooking(event, "naration");
                     }}
                     className="form-control mt-2"
                   />

@@ -59,8 +59,8 @@ const getAllBooking = async () => {
     return result.data.data;
 };
 
-      const getServiceList = async () => {
-         const result = await axios.get(ApiUrl + Constant.GET_ALL_SERVICE);
+      const getServiceListBooking = async () => {
+         const result = await axios.get(ApiUrl + Constant.GET_ALL_SERVICE_BOOKING);
          return result.data;
        };
 
@@ -82,7 +82,7 @@ const getAllBooking = async () => {
           }
         };
 
-      const onDelete = async (obj) => {
+      const onDeleteOffer = async (obj) => {
         const isDel = window.confirm("Are You Sure You Want To Delete");
           const result = await axios.post(ApiUrl + Constant.DELETE_ALL_OFFER, obj);
           return result.data;          
@@ -114,4 +114,4 @@ const getAllBooking = async () => {
 
       
 
-export { showRoomData, showRoomTypeData, showRoomStatus, addRoomData, editRoom, deleteRoom, getAllOffer, getAllBooking, getServiceList, saveOffer, onDelete, updateOffer, saveBooking, deleteBooking, onEditBooking, updateBooking}
+export { showRoomData, showRoomTypeData, showRoomStatus, addRoomData, editRoom, deleteRoom, getAllOffer, getAllBooking, getServiceListBooking, saveOffer, onDeleteOffer, updateOffer, saveBooking, deleteBooking, onEditBooking, updateBooking}
