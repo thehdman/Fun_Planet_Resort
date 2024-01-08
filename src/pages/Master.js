@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getMasterList, addMaster, onDelete, updateMaster } from '../services/Api'
+import { getMasterList, addMaster, onDeleteMaster, updateMaster } from '../services/Api'
 const Master = () => {
 
     let [masterdata, setMastereData] = useState([]);
@@ -87,7 +87,7 @@ const Master = () => {
     }
 
     const deleteAllMasterData = (masterobj) => {
-        onDelete(masterobj).then((data) => {
+        onDeleteMaster(masterobj).then((data) => {
             if (data.result) {
                 alert("Master Deleted Successfully");
                 showAllMasterData();

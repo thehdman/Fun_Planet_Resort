@@ -213,6 +213,7 @@ const WeddingService = () => {
                             <div className='card-body'>
                                 <div className='row'>
                                     <div className='col-6'>
+                                        <label>Service Name</label>
                                         <input type='text' className='form-control' onChange={(event) => { changeFormValue(event, 'name') }} value={serviceobj.name} placeholder='Enter Service Name' />
                                         <div className='text-danger'>
                                             {
@@ -223,6 +224,7 @@ const WeddingService = () => {
 
                                     </div>
                                     <div className='col-6'>
+                                        <label>Service Type</label>
                                         <input type='text' className='form-control  ' onChange={(event) => { changeFormValue(event, 'serviceType') }} value={serviceobj.serviceType} placeholder='Enter Service Type' required />
                                         <div className='text-danger'>
                                             {
@@ -234,6 +236,7 @@ const WeddingService = () => {
                                 </div>
                                 <div className='row'>
                                     <div className='col-6'>
+                                        <label>Order Number</label>
                                         <input type='text' className='form-control  mt-2' onChange={(event) => { changeFormValue(event, 'orderNo') }} value={serviceobj.orderNo} placeholder='Enter Order No' />
                                         <div className='text-danger'>
                                             {
@@ -243,6 +246,7 @@ const WeddingService = () => {
                                         </div>
                                     </div>
                                     <div className='col-6'>
+                                        <label>Rate</label>
                                         <input type='text' className='form-control  mt-2' onChange={(event) => { changeFormValue(event, 'rate') }} value={serviceobj.rate} placeholder='Enter Rate' />
                                         <div className='text-danger'>
                                             {
