@@ -1,8 +1,8 @@
 import axios from 'axios';
 import * as Constant from "./Constant"
-
-
 const ApiUrl = process.env.REACT_APP_API_KEY;
+
+
 
 const showRoomData = async () => {
     try {
@@ -13,5 +13,120 @@ const showRoomData = async () => {
         alert(error.code)
     }
 }
+// ---------------------------------
+const getWeddingList = async () => {
+    try {
+        const result = await axios.get(ApiUrl + Constant.GET_All_PACKAGES);
+        return result.data
+    }
+    catch (error) {
+        alert(error.code)
+    }
+}
+// ----------------------------------
 
-export {showRoomData}
+const getUserList = async () => {
+    try {
+        const result = await axios.get(ApiUrl + Constant.Get_All_User);
+        return result.data
+    }
+    catch (error) {
+        alert(error.code)
+    }
+}
+
+// const getWeddingList = async () => {
+//     const result = await axios.get(ApiUrl + Constant.GET_All_PACKAGES);
+//    return result.data
+//   }
+
+const saveWedding = async (Obj) => {
+   
+    try {
+      const result = await axios.post(
+        ApiUrl + Constant.Save_Wedding,
+        Obj
+      );
+      return result.data
+      
+    } catch (error) {
+     
+      
+      alert(error.code);
+    }
+  };
+
+  const onDelete = async (id) => {
+    const isDelte = window.confirm("Are You Sure want to Delete");
+    if (isDelte) {
+      const result = await axios.post(
+        ApiUrl + Constant.ON_DELETE +
+        id
+      );return result.data
+   
+    }};
+
+   
+      const updateWedding = async (Obj) => {
+   
+        try {
+          const result = await axios.post(
+            ApiUrl + Constant.SAVE_Update,
+            Obj
+          );
+          return result.data
+          
+        } catch (error) {
+         
+          
+          alert(error.code);
+        }
+      };
+
+    //   ---------------------------------------
+    // ----------------------------------------
+
+   
+      const saveUser = async (Obj) => {
+   
+        try {
+          const result = await axios.post(
+            ApiUrl + Constant.Save_User,
+            Obj
+          );
+          return result.data
+          
+        } catch (error) {
+         
+          
+          alert(error.code);
+        }
+      };
+
+      const updateUser = async (Obj) => {
+   
+        try {
+          const result = await axios.post(
+            ApiUrl + Constant.SAVE_Update_User,
+            Obj
+          );
+          return result.data
+          
+        } catch (error) {
+         
+          
+          alert(error.code);
+        }
+      };
+
+      const onDeleteUser = async (Obj) => {
+        const isDelte = window.confirm("Are You Sure want to Delete");
+        if (isDelte) {
+          const result = await axios.post(
+            ApiUrl + Constant.ON_DELETE_User ,
+            Obj
+          );return result.data
+       
+        }};
+       
+export {showRoomData , getWeddingList ,getUserList,saveWedding,onDelete,updateWedding,saveUser,updateUser,onDeleteUser}
