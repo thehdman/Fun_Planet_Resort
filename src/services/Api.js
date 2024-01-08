@@ -30,6 +30,31 @@ const addRoomData = async (obj) => {
     }
 }
 
+
+const getMasterList = async () => {
+    const result = await axios.get(ApiUrl + Constant.GET_ALL_MASTER);
+    return result.data
+}
+
+const addMaster = async (obj) => {
+    try {
+
+        const result = await axios.post(ApiUrl + Constant.ADD_MASTER, obj);
+        return result.data
+    } catch (error) {
+        alert(error.code)
+    }
+
+}
+
+const updateMaster = async (obj) => {
+    try {
+        const result = await axios.post(ApiUrl + Constant.UPDATE_MASTER, obj);
+        return result.data
+    } catch (error) {
+    }
+}
+
 const editRoom = async (id) => {
     try {
         const result = await axios.get(ApiUrl + Constant.EDIT_ROOM + id);
@@ -40,9 +65,42 @@ const editRoom = async (id) => {
     }
 }
 
+
+const onDelete = async (obj) => {
+    const isDelte = window.confirm('Are You Sure want to Delete');
+    if (isDelte) {
+        const result = await axios.post(ApiUrl + Constant.DELETE_MASTER, obj);
+        return result.data
+    }
+}
+
+const getWedding= async () => {
+    const result = await axios.get(ApiUrl + Constant.GET_WEDDING);
+    return result.data
+}
+
+const addWeddingService = async (obj) => {
+    try {
+        const result = await axios.post(ApiUrl + Constant.ADD_WEDDING,obj);
+        return result.data
+    } catch (error) {
+        alert(error.code)
+    }
+
+
+}
+
+const updateService = async (obj) => {
+    try {
+        const result = await axios.post(ApiUrl + Constant.UPDATE_WEDDING,obj);
+        return result.data
+    } catch (error) {
+    }
+}
 const deleteRoom = async (obj) => {
     try {
         const result = await axios.post(ApiUrl + Constant.DELETE_ROOM, obj);
+        return result.data
     }
     catch (error) {
         alert(error.code)
@@ -112,6 +170,13 @@ const getAllBooking = async () => {
           return result.data.data;
       };
 
-      
+const onDeleteWedding = async (obj) => {
+    const isDelte = window.confirm('Are You Sure want to Delete');
+    if (isDelte) {
+        const result = await axios.post(ApiUrl + Constant.DELETE_WEDDING, obj);
+        return result.data
+    }
+}
 
-export { showRoomData, showRoomTypeData, showRoomStatus, addRoomData, editRoom, deleteRoom, getAllOffer, getAllBooking, getServiceListBooking, saveOffer, onDeleteOffer, updateOffer, saveBooking, deleteBooking, onEditBooking, updateBooking}
+ 
+export { showRoomData, showRoomTypeData, showRoomStatus, addRoomData, editRoom, deleteRoom,getWedding,addWeddingService,updateService,onDeleteWedding,getMasterList, addMaster, onDelete, updateMaster,saveOffer, onDeleteOffer, updateOffer,getAllOffer,getServiceListBooking, saveBooking, deleteBooking, onEditBooking, updateBooking}
