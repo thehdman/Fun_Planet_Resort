@@ -54,6 +54,13 @@ const updateMaster = async (obj) => {
     } catch (error) {
     }
 }
+const onDeleteMaster = async (obj) => {
+    try {
+        const result = await axios.post(ApiUrl + Constant.DELETE_MASTER, obj);
+        return result.data
+    } catch (error) {
+    }
+}
 
 const editRoom = async (id) => {
     try {
@@ -69,7 +76,7 @@ const editRoom = async (id) => {
 const onDeleteWedding = async (obj) => {
     const isDelte = window.confirm('Are You Sure want to Delete');
     if (isDelte) {
-        const result = await axios.post(ApiUrl + Constant.DELETE_MASTER, obj);
+        const result = await axios.post(ApiUrl + Constant.DELETE_WEDDING, obj);
         return result.data
     }
 }
@@ -89,7 +96,13 @@ const addWeddingService = async (obj) => {
 
 
 }
-
+const updateWedding = async (obj) => {
+    try {
+        const result = await axios.post(ApiUrl + Constant.UPDATE_WEDDING, obj);
+        return result.data
+    } catch (error) {
+    }
+}
 const updateService = async (obj) => {
     try {
         const result = await axios.post(ApiUrl + Constant.UPDATE_WEDDING,obj);
@@ -171,4 +184,4 @@ const getAllBooking = async () => {
 
 
  
-export { showRoomData, showRoomTypeData, showRoomStatus, addRoomData, editRoom, deleteRoom,getWedding,addWeddingService,updateService,onDeleteWedding,getMasterList, addMaster, onDelete, updateMaster,saveOffer, onDeleteOffer, updateOffer,getAllOffer,getServiceListBooking, saveBooking, deleteBooking, onEditBooking, updateBooking}
+export { showRoomData, showRoomTypeData, showRoomStatus, addRoomData, editRoom, deleteRoom,getWedding,addWeddingService,updateService,onDeleteWedding,getMasterList, addMaster, updateMaster,onDeleteMaster,saveOffer, onDeleteOffer, updateOffer,getAllOffer,getServiceListBooking, saveBooking, deleteBooking, onEditBooking, updateBooking,getAllBooking,updateWedding}

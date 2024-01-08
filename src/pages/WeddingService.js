@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { getWedding, addWeddingService, updateService, onDeleteWedding } from '../services/Api'
+import { getWedding, addWeddingService, updateWedding, onDeleteWedding } from '../services/Api'
 const WeddingService = () => {
 
     let [weddingList, setWeddingList] = useState([]);
@@ -96,7 +96,7 @@ const WeddingService = () => {
             else {
                 setFormSubmited(true);
             }
-            updateService(serviceobj).then((data) => {
+            updateWedding(serviceobj).then((data) => {
                 if (data.result) {
                     alert("Update Successfully");
                     showAllWeddingrData();
