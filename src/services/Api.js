@@ -19,7 +19,19 @@ const showServicesData = async () => {
     const result = await axios.get(ApiUrl + Constant.Get_All_Service);
    return result.data
 }
-export {showRoomData,showServicesData}
+const addServicesData = async (Obj) => {
+    debugger;
+    const result = await axios.post(ApiUrl + Constant.ADD_SERVICE,Obj);
+    
+    try {
+        return result.data
+        
+    } catch (error) {
+        alert(error.code)
+    }
+
+}
+export {showRoomData,showServicesData, addServicesData}
 
 // servicePage
 
