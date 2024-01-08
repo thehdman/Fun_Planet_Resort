@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { getAllOffer, saveOffer, onDelete, updateOffer } from "../services/Api";
+import { getAllOffer, saveOffer, onDeleteOffer, updateOffer } from "../services/Api";
 
 const Offer = () => {
 
@@ -44,11 +44,11 @@ const Offer = () => {
 
 
 
-  const getFormValues = (event, key) => {
+  const getFormValuesOffer = (event, key) => {
     setOfferObj((prevObj) => ({ ...prevObj, [key]: event.target.value }));
   };
 
-  const getCheckBoxValue = (event) => {
+  const getCheckBoxValueOffer = (event) => {
     setOfferObj((prevObj) => ({ ...prevObj, isActive: event.target.checked }));
   };
 
@@ -75,7 +75,7 @@ const Offer = () => {
   }
 
   const deleteAllOfferData = (offerObj) => {
-    onDelete(offerObj).then((data) => {
+    onDeleteOffer(offerObj).then((data) => {
       if (data.result) {
         alert("Offer Deleted Successfully");
         showAllOfferData();
@@ -85,7 +85,7 @@ const Offer = () => {
     })
   }
 
-  const onEdit = (item) => {
+  const onEditOffer = (item) => {
     setOfferObj((prevObj) => ({
       ...prevObj,
       offerId: item.offerId,
@@ -149,7 +149,7 @@ const Offer = () => {
                             <button
                               className="btn btn-sm btn-success"
                               onClick={() => {
-                                onEdit(item);
+                                onEditOffer(item);
                               }}
                             >
                               {" "}
@@ -185,7 +185,7 @@ const Offer = () => {
                     type="text"
                     value={offerObj.offerName}
                     onChange={(event) => {
-                      getFormValues(event, "offerName");
+                      getFormValuesOffer(event, "offerName");
                     }}
                     className="form-control mt-1"
                   ></input>
@@ -196,7 +196,7 @@ const Offer = () => {
                     type="text"
                     value={offerObj.offerDetails}
                     onChange={(event) => {
-                      getFormValues(event, "offerDetails");
+                      getFormValuesOffer(event, "offerDetails");
                     }}
                     className="form-control mt-1"
                   ></input>
@@ -209,7 +209,7 @@ const Offer = () => {
                     type="date"
                     value={offerObj.createdDate}
                     onChange={(event) => {
-                      getFormValues(event, "createdDate");
+                      getFormValuesOffer(event, "createdDate");
                     }}
                     className="form-control mt-1"
                   ></input>
@@ -220,7 +220,7 @@ const Offer = () => {
                     type="text"
                     value={offerObj.amount}
                     onChange={(event) => {
-                      getFormValues(event, "amount");
+                      getFormValuesOffer(event, "amount");
                     }}
                     className="form-control mt-1"
                   ></input>
@@ -233,7 +233,7 @@ const Offer = () => {
                     type="checkbox"
                     checked={offerObj.isActive}
                     onChange={(event) => {
-                      getCheckBoxValue(event, "isActive");
+                      getCheckBoxValueOffer(event, "isActive");
                     }}
                     className="form-check-input mt-1"
                   />

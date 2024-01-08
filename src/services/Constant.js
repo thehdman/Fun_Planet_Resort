@@ -1,7 +1,7 @@
 export const GET_ALL_ROOM = "GetAllRoom";
 export const GET_ALL_OFFER = "GetAllOffer";
 export const GET_ALL_BOOKING = "GetAllBookings";
-export const GET_ALL_SERVICE = "GetAllService";
+export const GET_ALL_SERVICE_BOOKING = "GetAllService";
 export const ADD_ALL_OFFER = "AddOffer";
 export const DELETE_ALL_OFFER = "DeleteOffer";
 export const UPADTE_ALL_OFFER = "AddOffer";
