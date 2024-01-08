@@ -103,7 +103,6 @@ const deleteRoom = async (obj) => {
         return result.data
     }
     catch (error) {
-        alert(error.code)
     }
 }
 
