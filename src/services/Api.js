@@ -41,11 +41,10 @@ const editRoom = async (id) => {
 }
 
 const deleteRoom = async (obj) => {
-    try {
+    const isDelte = window.confirm('Are You Sure want to Delete');
+    if (isDelte) {
         const result = await axios.post(ApiUrl + Constant.DELETE_ROOM, obj);
-    }
-    catch (error) {
-        alert(error.code)
+        return result.data;
     }
 }
 
