@@ -31,14 +31,17 @@ const Master = () => {
     const addAllMasterData = () => {
         try {
             setFormSubmited(true)
-            addMaster(masterobj).then((data) => {
-                if (data.result) {
-                    alert("Master Added Successfully");
-                    showAllMasterData();
-                } else {
-                    alert(data.message);
-                }
-            })
+            if(masterobj.statusFor != '' && masterobj.status != '') { 
+                addMaster(masterobj).then((data) => {
+                    if (data.result) {
+                        alert("Master Added Successfully");
+                        showAllMasterData();
+                    } else {
+                        alert(data.message);
+                    }
+                })
+            }
+           
         } catch (error) {
             alert(error.code)
         }

@@ -1,17 +1,17 @@
 
 import React, { useEffect, useState } from 'react';
-import {getWedding , addWeddingService, updateService, onDeleteWedding} from '../services/Api'
+import { getWedding, addWeddingService, updateService, onDeleteWedding } from '../services/Api'
 const WeddingService = () => {
 
     let [weddingList, setWeddingList] = useState([]);
     let [serviceobj, setServiceObj] = useState({
-        "serviceId":0,
-        "rate":0,
+        "serviceId": 0,
+        "rate": 0,
         "isActive": false,
         "isDeleted": false,
         "isPax": false,
         "message": "",
-        "orderNo":0,
+        "orderNo": 0,
         "result": true,
         "serviceType": "",
         "name": ""
@@ -30,23 +30,31 @@ const WeddingService = () => {
     }
     const addAllWedding = () => {
         try {
-            addWeddingService(serviceobj).then((data) => {
-                debugger;
-                if (data.result) {
+            setFormSubmited(true)
+            if (serviceobj.name != '' &&
+                serviceobj.serviceType != '' &&
+                serviceobj.orderNo != '' &&
+                serviceobj.isPax != '' &&
+                serviceobj.isDeleted != '' &&
+                serviceobj.isActive != '') {
+                addWeddingService(serviceobj).then((data) => {
                     debugger;
-                    alert("Wedding Added Successfully");
-                    showAllWeddingrData();
-                } else {
-                    alert(data.message);
-                }
-            })
+                    if (data.result) {
+                        debugger;
+                        alert("Wedding Added Successfully");
+                        showAllWeddingrData();
+                    } else {
+                        alert(data.message);
+                    }
+                })
+            }
         } catch (error) {
             alert(error.code)
         }
-       
+
     }
 
- 
+
     const changeFormValue = (event, key) => {
         setServiceObj(prevObj => ({ ...prevObj, [key]: event.target.value }))
     }
@@ -72,22 +80,22 @@ const WeddingService = () => {
         }
 
     }
-    
+
     const updateAllWedding = () => {
         try {
             if (serviceobj.serviceId == '' &&
-            serviceobj.rate == '' &&
-            serviceobj.isActive == '' &&
-            serviceobj.isDeleted == '' &&
-            serviceobj.isPax == '' &&
-            serviceobj.orderNo == '' &&
-            serviceobj.serviceType == '' &&
-            serviceobj.name == '') {
-            alert("All Fields Are Required")
-        }
-        else {
-            setFormSubmited(true);
-        }
+                serviceobj.rate == '' &&
+                serviceobj.isActive == '' &&
+                serviceobj.isDeleted == '' &&
+                serviceobj.isPax == '' &&
+                serviceobj.orderNo == '' &&
+                serviceobj.serviceType == '' &&
+                serviceobj.name == '') {
+                alert("All Fields Are Required")
+            }
+            else {
+                setFormSubmited(true);
+            }
             updateService(serviceobj).then((data) => {
                 if (data.result) {
                     alert("Update Successfully");
@@ -116,12 +124,12 @@ const WeddingService = () => {
 
 
 
-    
+
     const reset = () => {
         setFormSubmited(false);
         setServiceObj({
             ...serviceobj,
-            "serviceId":0,
+            "serviceId": 0,
             "rate": '',
             "isActive": '',
             "isDeleted": '',
@@ -137,7 +145,7 @@ const WeddingService = () => {
 
     return (
         <div>
-            <div className='container-fluid'>
+            <div className='container-fluid mt-3'>
                 <div className='row'>
                     <div className='col-8'>
                         <div className='card'>
@@ -186,7 +194,7 @@ const WeddingService = () => {
                                                         <td> {item.orderNo} </td>
                                                         <td> {item.rate} </td>
                                                         <td><button className='btn btn-sm btn-success' onClick={() => { onEdit(item) }} > Edit</button> </td>
-                                                        <td> <button className='btn btn-sm btn-danger' onClick={()=>{deleteAllWeddingData(item)}}> Delete</button></td>
+                                                        <td> <button className='btn btn-sm btn-danger' onClick={() => { deleteAllWeddingData(item) }}> Delete</button></td>
                                                     </tr>)
                                                 })
                                             }
@@ -218,7 +226,7 @@ const WeddingService = () => {
                                         <input type='text' className='form-control  ' onChange={(event) => { changeFormValue(event, 'serviceType') }} value={serviceobj.serviceType} placeholder='Enter Service Type' required />
                                         <div className='text-danger'>
                                             {
-                        
+
                                                 formsubmited && serviceobj.serviceType == '' && <span>Service Type Is Required </span>
                                             }
                                         </div>
@@ -229,7 +237,7 @@ const WeddingService = () => {
                                         <input type='text' className='form-control  mt-2' onChange={(event) => { changeFormValue(event, 'orderNo') }} value={serviceobj.orderNo} placeholder='Enter Order No' />
                                         <div className='text-danger'>
                                             {
-                                                
+
                                                 formsubmited && serviceobj.orderNo == '' && <span>Order Number Is Required </span>
                                             }
                                         </div>
@@ -238,7 +246,7 @@ const WeddingService = () => {
                                         <input type='text' className='form-control  mt-2' onChange={(event) => { changeFormValue(event, 'rate') }} value={serviceobj.rate} placeholder='Enter Rate' />
                                         <div className='text-danger'>
                                             {
-                                                
+
                                                 formsubmited && serviceobj.rate == '' && <span>Rate Is Required </span>
                                             }
                                         </div>
@@ -246,15 +254,15 @@ const WeddingService = () => {
                                 </div>
                                 <div className='row mt-2'>
                                     <div className='col-4'>
-                                        <input type="checkbox" onChange={(event) => { changeCheboxValue(event, 'isActive' ) }}  checked={serviceobj.isActive}/>
+                                        <input type="checkbox" onChange={(event) => { changeCheboxValue(event, 'isActive') }} checked={serviceobj.isActive} />
                                         <label /> IsActive
                                     </div>
                                     <div className='col-4'>
-                                        <input type="checkbox" onChange={(event) => { changeCheboxValue(event, 'isDeleted') }} checked={serviceobj.isDeleted}/>
+                                        <input type="checkbox" onChange={(event) => { changeCheboxValue(event, 'isDeleted') }} checked={serviceobj.isDeleted} />
                                         <label /> IsDeleted
                                     </div>
                                     <div className='col-4'>
-                                        <input type="checkbox" onChange={(event) => { changeCheboxValue(event, 'isPax') }} checked={serviceobj.isPax}/>
+                                        <input type="checkbox" onChange={(event) => { changeCheboxValue(event, 'isPax') }} checked={serviceobj.isPax} />
                                         {/* checked={serviceobj.isPax} */}
                                         <label /> IsPax
                                     </div>
@@ -264,7 +272,7 @@ const WeddingService = () => {
                                         <button className='btn btn-secondary' onClick={reset}>Reset</button>&nbsp;
                                         {
                                             serviceobj.serviceId == 0 &&
-                                             <button className='btn btn-success ' onClick={addAllWedding}>Add Service</button>
+                                            <button className='btn btn-success ' onClick={addAllWedding}>Add Service</button>
 
                                         }
                                         {
