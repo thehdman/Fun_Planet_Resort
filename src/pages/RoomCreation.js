@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { showRoomData, showRoomTypeData, showRoomStatus, addRoomData, editRoom, deleteRoom} from "../services/Api"
+import { showRoomData, showRoomTypeData, showRoomStatus, addRoomData, editRoom, deleteRoom } from "../services/Api"
 
 const RoomCreation = () => {
 
@@ -64,7 +64,9 @@ const RoomCreation = () => {
     }
 
     const editRoomData = (id) => {
+        debugger;
         editRoom(id).then((data) => {
+            console.log(data)
             if (data.result) {
                 setRoomObj(data)
             }
@@ -92,19 +94,20 @@ const RoomCreation = () => {
         })
     }
 
-    const deleteRoomData = () => {
-        deleteRoom().then((data) => {
-            if(data.result){
+    const deleteRoomData = (obj) => {
+        deleteRoom(obj).then((data) => {
+            if (data.result) {
                 alert('Room Data Deleted Successfully');
                 showAllRoomData();
             }
-            else{
+            else {
                 alert(data.message)
             }
         })
     }
 
     const resetRoomData = () => {
+        debugger;
         setRoomObj({
             "roomId": 0,
             "roomTypeId": 0,
@@ -113,6 +116,8 @@ const RoomCreation = () => {
             "roomCapacity": 0,
             "roomExtensionNo": "",
             "roomStatus": 0,
+            "message": "",
+            "result": true
         })
     }
 
@@ -139,7 +144,6 @@ const RoomCreation = () => {
                                             <th>Total Bed</th>
                                             <th>Room Capacity</th>
                                             <th>Room Extension No</th>
-                                            <th>Room Status</th>
                                             <th>Room Status Name</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
@@ -173,10 +177,9 @@ const RoomCreation = () => {
                                                         <td>{item.totalBed}</td>
                                                         <td>{item.roomCapacity}</td>
                                                         <td>{item.roomExtensionNo}</td>
-                                                        <td>{item.roomStatus}</td>
                                                         <td>{item.roomStatusName}</td>
                                                         <td><button className='btn btn-success btn-sm' onClick={() => { editRoomData(item.roomId) }}>Edit</button></td>
-                                                        <td><button className='btn btn-danger btn-sm' onClick={() => { deleteRoomData(item)}}>Delete</button></td>
+                                                        <td><button className='btn btn-danger btn-sm' onClick={() => { deleteRoomData(item) }}>Delete</button></td>
                                                     </tr>)
                                                 })
                                             }
@@ -199,7 +202,7 @@ const RoomCreation = () => {
                                 <div className='row'>
                                     <div className='col-6'>
                                         <label>Room Type</label>
-                                        <select className='form-select' onChange={(event) => { getRoomObj(event, 'roomTypeId') }}>
+                                        <select className='form-select' value={roomObj.roomTypeId} onChange={(event) => { getRoomObj(event, 'roomTypeId') }}>
                                             <option>Select Room Type</option>
                                             {
                                                 roomType.map((item) => {
@@ -216,7 +219,7 @@ const RoomCreation = () => {
                                     </div>
                                     <div className='col-6'>
                                         <label>Room No</label>
-                                        <input type='text' className='form-control' onChange={(event) => { getRoomObj(event, 'roomNo') }}></input>
+                                        <input type='text' className='form-control' value={roomObj.roomNo} onChange={(event) => { getRoomObj(event, 'roomNo') }}></input>
                                         <div className='text-danger'>
                                             {
                                                 isFormSubmitted && roomObj.roomNo == '' && <span>Room No is required.</span>
@@ -228,7 +231,7 @@ const RoomCreation = () => {
                                 <div className='row mt-3'>
                                     <div className='col-6'>
                                         <label>Total Bed</label>
-                                        <input type='number' className='form-control' onChange={(event) => { getRoomObj(event, 'totalBed') }}></input>
+                                        <input type='number' className='form-control' value={roomObj.totalBed} onChange={(event) => { getRoomObj(event, 'totalBed') }}></input>
                                         <div className='text-danger'>
                                             {
                                                 isFormSubmitted && roomObj.totalBed == '' && <span>Total Bed is required.</span>
@@ -238,7 +241,7 @@ const RoomCreation = () => {
                                     </div>
                                     <div className='col-6'>
                                         <label>Room Capacity</label>
-                                        <input type='number' className='form-control' onChange={(event) => { getRoomObj(event, 'roomCapacity') }}></input>
+                                        <input type='number' className='form-control' value={roomObj.roomCapacity} onChange={(event) => { getRoomObj(event, 'roomCapacity') }}></input>
                                         <div className='text-danger'>
                                             {
                                                 isFormSubmitted && roomObj.roomCapacity == '' && <span>Room Capacity is required.</span>
@@ -250,7 +253,7 @@ const RoomCreation = () => {
                                 <div className='row mt-3'>
                                     <div className='col-6'>
                                         <label>Room Extension No</label>
-                                        <input type='text' className='form-control' onChange={(event) => { getRoomObj(event, 'roomExtensionNo') }}></input>
+                                        <input type='text' className='form-control' value={roomObj.roomExtensionNo} onChange={(event) => { getRoomObj(event, 'roomExtensionNo') }}></input>
                                         <div className='text-danger'>
                                             {
                                                 isFormSubmitted && roomObj.roomExtensionNo == '' && <span>Room Extension No is required.</span>
@@ -260,7 +263,7 @@ const RoomCreation = () => {
                                     </div>
                                     <div className='col-6'>
                                         <label>Room Status</label>
-                                        <select className='form-select' onChange={(event) => { getRoomObj(event, 'roomStatus') }}>
+                                        <select className='form-select' value={roomObj.roomStatus} onChange={(event) => { getRoomObj(event, 'roomStatus') }}>
                                             <option>Select Room Status</option>
                                             {
                                                 roomStatusList.map((item) => {
@@ -285,7 +288,7 @@ const RoomCreation = () => {
                                             roomObj.roomId == 0 && <button className='btn btn-success btn-sm' onClick={addAllRoomData}>Save Data</button>
                                         }
                                         {
-                                            roomObj.roomId !== 0 && <button className='btn btn-primary btn-sm' onClick={updateRoomData}>Update Data</button>
+                                            roomObj.roomId !== 0 && <button className='btn btn-warning btn-sm' onClick={updateRoomData}>Update Data</button>
                                         }
                                     </div>
                                 </div>
