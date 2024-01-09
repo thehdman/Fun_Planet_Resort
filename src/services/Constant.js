@@ -1,4 +1,16 @@
 export const GET_ALL_ROOM = "GetAllRoom";
+export const GET_ALL_ROOM_TYPE = "GetRoomType";
+export const GET_ALL_USER = "AddUpdateRoomType";
+export const GET_ALL_UPDATE ="AddUpdateRoomType";
+export const GET_ALL_ENQUIRY="GetAllEnquiry";
+export const GET_ALL_ENQUIRY_USER="GetAllUser";
+export const GET_ALL_REFERENCE='GetMasterByStatus?master=Reference';
+export const GET_ALL_SUBJECTLIST='GetMasterByStatus?master=EnquirySubject';
+export const GET_ALL_ENQUIRYSTATUS='GetMasterByStatus?master=Enquiry';
+export const SAVE_ENQUIRY='AddEnquiry';
+export const  EDIT_ENQUIRY='GetEnquiryByEnquiryId?id=';
+export const DELETE_ENQUIRY='DeleteEnquiry';
+export const UPDATE_ENQUIRY='AddEnquiry';
 export const GET_ALL_WEDDINGQUOTATION = "Getwedding/0";
 export const GET_ALL_SERVICEDATA_List = "GetweddingService?service=serviceId";
 export const GET_ALL_WEDDINGPACKAGE = "GetAllWeddingPackages?weddingPackageId=PackageName";

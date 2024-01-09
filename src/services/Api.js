@@ -46,6 +46,84 @@ const addRoomData = async (obj) => {
     }
 }
 
+
+const  getAllRoomType = async ()=>
+{
+    const result=await axios.get(ApiUrl + Constant.GET_ALL_ROOM_TYPE)
+   return result.data
+}
+
+const SaveRoomtype = async (obj) => {
+ 
+        const result = await axios.post(ApiUrl + Constant.GET_ALL_USER,obj);
+        return result.data;
+    
+}
+        const UpdateRoomtype = async (obj) => {
+            
+            const result = await axios.post(ApiUrl + Constant.GET_ALL_UPDATE, obj);
+            return result.data;
+        }
+        const getShowEnquiry = async (obj) => {
+            try {
+                const result = await axios.post(ApiUrl + Constant.GET_ALL_ENQUIRY,obj);
+                return result.data;
+            } catch (error) {
+               alert(error.code)
+            }
+        }
+        const getUserList = async () => {
+            const result = await axios.get(ApiUrl + Constant.GET_ALL_ENQUIRY_USER);
+            return result.data;
+        }
+
+        const getReferenceList = async () => {
+            const result = await axios.get(ApiUrl + Constant.GET_ALL_REFERENCE);
+           return result.data;
+        }
+        const getSubjectList = async () => {
+            const result = await axios.get(ApiUrl + Constant.GET_ALL_SUBJECTLIST);
+            return result.data;
+        }
+
+        const getEnquiryStatusList = async () => {
+            const result = await axios.get(ApiUrl + Constant.GET_ALL_ENQUIRYSTATUS);
+            return result.data;
+        }
+
+        const saveEnquiry = async (obj) => {
+            const result = await axios.post(ApiUrl + Constant.SAVE_ENQUIRY,obj);
+            return result.data;
+           
+        }
+
+        const onEditEnquiry = async (id) => {
+            const result = await axios.post(ApiUrl + Constant.EDIT_ENQUIRY +id);
+           return result.data;
+          }
+
+          const deleteenquiry = async (obj) =>{
+            const isDelte = window.confirm('Are you sure you want to delete');
+            if (isDelte) {
+                const result = await axios.post(ApiUrl + Constant.DELETE_ENQUIRY, obj);
+                return result.data;
+                   
+            }   
+        }
+
+        const updateenquiry = async (obj) => {
+            const result = await axios.post(ApiUrl + Constant.UPDATE_ENQUIRY, obj );       
+            return result.data;
+               
+        }
+
+
+     
+
+
+
+
+
 const getQuotationList = async () => {
     const result = await axios.get(ApiUrl + Constant.GET_ALL_WEDDINGQUOTATION);
     return result.data
@@ -131,10 +209,10 @@ const updateMaster = async (obj) => {
     }
 }
 const onDeleteMaster = async (obj) => {
-    try {
+    const isDelte = window.confirm('Are You Sure want to Delete');
+    if (isDelte) {
         const result = await axios.post(ApiUrl + Constant.DELETE_MASTER, obj);
         return result.data
-    } catch (error) {
     }
 }
 
@@ -260,4 +338,4 @@ const onEditBooking = async (id) => {
 
 
 
-export { showRoomData, showRoomTypeData, showRoomStatus, addRoomData, editRoom, deleteRoom, getWedding, addWeddingService, updateService, onDeleteWedding, getMasterList, addMaster, updateMaster, onDeleteMaster, saveOffer, onDeleteOffer, updateOffer, getAllOffer, getServiceListBooking, saveBooking, deleteBooking, onEditBooking, updateBooking, getAllBooking, updateWedding, showServicesData, addServicesData, DeleteService, SaveFoodItem, getFoodItemTypes, getFoodItemList, deleteFoodItem , getQuotationList, getServiceDataList, getWeddingPackagesList, addAllWeddingQuotation, editQuotationList, deleteQuotationList }
+export { showRoomData,SaveRoomtype, showRoomTypeData,getAllRoomType, UpdateRoomtype,showRoomStatus, addRoomData, editRoom, deleteRoom, getWedding, addWeddingService, updateService, onDeleteWedding, getMasterList, addMaster, updateMaster, onDeleteMaster, saveOffer, onDeleteOffer, updateOffer, getAllOffer, getServiceListBooking, saveBooking, deleteBooking, onEditBooking, updateBooking, getAllBooking, updateWedding, showServicesData, addServicesData, DeleteService, SaveFoodItem, getFoodItemTypes, getFoodItemList, deleteFoodItem , getQuotationList, getServiceDataList, getWeddingPackagesList, addAllWeddingQuotation, editQuotationList, deleteQuotationList,getShowEnquiry,getUserList,getReferenceList, getSubjectList,getEnquiryStatusList,saveEnquiry,onEditEnquiry,deleteenquiry,updateenquiry }
