@@ -13,5 +13,9 @@ const showRoomData = async () => {
         alert(error.code)
     }
 }
+const getLogin = async (obj) =>{
+        const result = await axios.post(ApiUrl + Constant.GET_LOGIN,obj);
+        return result.data
+}   
 
-export {showRoomData}
+export {showRoomData, getLogin}
