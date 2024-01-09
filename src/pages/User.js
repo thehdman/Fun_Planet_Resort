@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { getUserListResortResort,saveUser ,updateUser,onDeleteUser} from "../services/Api";
+import { getUserListResort,saveUser ,onDeleteUser} from "../services/Api";
 
 
 
