@@ -149,7 +149,7 @@ const Services = () => {
                                                             <td> {item.taxableAmount}</td>
                                                             <td> {item.cgst}</td>
                                                             <td> {item.sgst}</td>
-                                                            <td><button className='btn btn-sm btn-success' onClick= { editService} > Edit</button> </td>
+                                                            <td><button className='btn btn-sm btn-success' onClick= {()=> editService (item)} > Edit</button> </td>
                                                             <td> <button className='btn btn-sm btn-danger'onClick={DeleteAllService} > Delete</button></td>
                                                         </tr>)
                                                     })
@@ -175,7 +175,7 @@ const Services = () => {
                                         </div>
                                         <div className='col-6'>
                                             <label>Taxable Amount</label>
-                                            <input type='text' className='form-control' onChange={(event) => { getServicesObj(event, 'taxableAmount') }} placeholder='Enter Taxable Amount' />
+                                            <input type='text' className='form-control' onChange={(event) => { getServicesObj(event, 'taxableAmount') }} value={serviceObj.taxableAmount} placeholder='Enter Taxable Amount' />
                                         </div>
                                     </div>
                                     <div className='row mt-3'>
@@ -190,7 +190,7 @@ const Services = () => {
                                     </div>
                                     <div className='row'>
                                         <div className='col-6 mt-3 text-center'>
-                                            <button className='btn btn-secondary btn-sm' >Reset</button>&nbsp;
+                                            <button className='btn btn-secondary btn-sm'onClick={resetServicesData} >Reset</button>&nbsp;
                                         </div>
                                         <div className='col-6 mt-3 text-center'>
                                             {
