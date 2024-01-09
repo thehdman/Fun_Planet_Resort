@@ -5,6 +5,7 @@ import RoomCreation from '../pages/RoomCreation';
 import AddFoodItem from '../pages/AddFoodItem';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Services from '../pages/Services';
 import Master from '../pages/Master';
 import WeddingService from '../pages/WeddingService';
 import Offer from '../pages/Offer';
@@ -30,6 +31,7 @@ const AppRoutes = () => {
                 <Routes>
                     <Route path='RoomCreation' element={<RoomCreation></RoomCreation>}></Route>
                     <Route path='AddFoodItem' element={<AddFoodItem></AddFoodItem>}></Route>
+                    <Route path='Services' element={<Services></Services>}></Route>
                     <Route path='Master' element={<Master/>}></Route>
                     <Route path='WeddingService' element={<WeddingService/>}></Route>
                     <Route path='Offer' element={<Offer></Offer>}></Route>
