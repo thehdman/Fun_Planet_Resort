@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getWeddingList,saveWedding,onDeleteWeddingPackages,updateWedding } from "../services/Api";
+import { getWeddingList,saveWedding,onDeleteWeddingPackages,updateWeddingPackagesResort } from "../services/Api";
 
 import axios from "axios";
 
@@ -62,7 +62,7 @@ const WeddingPackages = () => {
     })
   }
   const saveAllUpdate = ()=>{
-    saveWedding(weddingObj).then((data)=>{
+    updateWeddingPackagesResort(weddingObj).then((data)=>{
          if(data.result){
           alert("Update Package Save");
           ShowWeddingPackages();

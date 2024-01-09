@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { getUserList,saveUser ,updateUser,onDeleteUser} from "../services/Api";
+import { getUserListResortResort,saveUser ,updateUser,onDeleteUser} from "../services/Api";
 
 
 
@@ -24,7 +24,7 @@ const User = () => {
   }, []);
 
   const showUserList = () =>{
-    getUserList().then((data) => {
+    getUserListResort().then((data) => {
         setUserList(data);
       setIsLoader(false);
     });
