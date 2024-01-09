@@ -7,6 +7,7 @@ const RoomCreation = () => {
     let [roomData, setRoomData] = useState([]);
     let [roomObj, setRoomObj] = useState({
         "roomId": 0,
+  
         "roomTypeId": 0,
         "roomNo": "",
         "totalBed": 0,

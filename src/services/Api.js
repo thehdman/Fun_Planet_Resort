@@ -56,11 +56,11 @@ const saveWedding = async (Obj) => {
     }
   };
 
-  const onDelete = async (id) => {
+  const onDeleteWeddingPackages = async (id) => {
     const isDelte = window.confirm("Are You Sure want to Delete");
     if (isDelte) {
       const result = await axios.post(
-        ApiUrl + Constant.ON_DELETE +
+        ApiUrl + Constant.ON_DELETE_WEDDING +
         id
       );return result.data
    
@@ -71,7 +71,7 @@ const saveWedding = async (Obj) => {
    
         try {
           const result = await axios.post(
-            ApiUrl + Constant.SAVE_Update,
+            ApiUrl + Constant.SAVE_Update_WEDDING,
             Obj
           );
           return result.data
@@ -129,4 +129,4 @@ const saveWedding = async (Obj) => {
        
         }};
        
-export {showRoomData , getWeddingList ,getUserList,saveWedding,onDelete,updateWedding,saveUser,updateUser,onDeleteUser}
+export {showRoomData , getWeddingList ,getUserList,saveWedding,onDeleteWeddingPackages,updateWedding,saveUser,updateUser,onDeleteUser}

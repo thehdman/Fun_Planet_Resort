@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getWeddingList,saveWedding,onDelete,updateWedding } from "../services/Api";
+import { getWeddingList,saveWedding,onDeleteWeddingPackages,updateWedding } from "../services/Api";
 
 import axios from "axios";
 
@@ -73,7 +73,7 @@ const WeddingPackages = () => {
   }
 
  const deleteAllWedding =(weddingPackageId)=>{
-  onDelete(weddingPackageId).then((data)=>{
+  onDeleteWeddingPackages(weddingPackageId).then((data)=>{
     if(data.result){
       alert("Wedding Package Delete");
       ShowWeddingPackages();
@@ -83,7 +83,7 @@ const WeddingPackages = () => {
   })
  };
 
- const onEdit = (item) => {
+ const onEditWeddingPackages = (item) => {
   setWeddingObj((prevObj) => ({
     ...prevObj,
     weddingPackageId: item.weddingPackageId,
@@ -156,7 +156,7 @@ const WeddingPackages = () => {
                           <button
                               className="btn btn-sm btn-primary"
                               onClick={() => {
-                                onEdit(item);
+                                onEditWeddingPackages(item);
                               }}
                             >
                               {" "}

@@ -78,7 +78,7 @@ const deleteAllWeddingUser =(userObj)=>{
  };
 
 
-  const onEdit = (item) => {
+  const onEditUser = (item) => {
     setUserObj((prevObj) => ({
       ...prevObj,
       userId:item.userId,
@@ -145,7 +145,7 @@ const deleteAllWeddingUser =(userObj)=>{
                           <button
                               className="btn btn-sm btn-primary"
                               onClick={() => {
-                                onEdit(item);
+                                onEditUser(item);
                               }}
                             >
                               {" "}
