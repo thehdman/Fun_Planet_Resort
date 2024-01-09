@@ -61,6 +61,16 @@ const Header = () => {
                         Booking
                       </Link>
                     </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/WeddingPackages">
+                      Wedding Packages
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/User">
+                      User
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </nav>
