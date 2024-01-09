@@ -30,7 +30,6 @@ const addRoomData = async (obj) => {
     }
 }
 
-<<<<<<< HEAD
 
 const showServicesData = async () => {
     const result = await axios.get(ApiUrl + Constant.Get_All_Service);
@@ -46,14 +45,23 @@ const addServicesData = async (Obj) => {
     } catch (error) {
         alert(error.code)
     }
-
 }
-export {showRoomData,showServicesData, addServicesData}
+const DeleteService = async (obj) => {
+    try {
+        const result = await axios.post(ApiUrl + Constant.DELETE_SERVICES, obj);
+    }
+    catch (error) {
+        alert(error.code)
+    }
+}
+
+
+
+
 
 // servicePage
 
 
-=======
 const editRoom = async (id) => {
     try {
         const result = await axios.get(ApiUrl + Constant.EDIT_ROOM + id);
@@ -73,5 +81,4 @@ const deleteRoom = async (obj) => {
     }
 }
 
-export { showRoomData, showRoomTypeData, showRoomStatus, addRoomData, editRoom, deleteRoom}
->>>>>>> 05aad0050c741db9f7c3991e910b0cca58d65c32
+export { showRoomData, showRoomTypeData, showRoomStatus, addRoomData, editRoom, deleteRoom,showServicesData,addServicesData,DeleteService}
