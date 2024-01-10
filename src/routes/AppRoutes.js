@@ -24,7 +24,11 @@ import Booking from '../pages/Booking';
 import { useState } from 'react';
 
 const AppRoutes = () => {
-    const [quotationObj, setQuotationObj] = useState({});
+    const [quotationObj, setQuotationObj] = useState({
+        "weddingDetails":[],
+        "eventDate" :"2024-01-10T15:43:10.356Z",
+        "confirmDate": "2024-01-10T15:43:10.356Z"
+    });
 
     return (
         <div>

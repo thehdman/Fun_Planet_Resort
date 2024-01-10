@@ -1,37 +1,38 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
-import { getServiceDataList, getWeddingPackagesList, addAllWeddingQuotation,editQuotationList } from '../services/Api';
+import { getServiceDataList, getWeddingPackagesList, addAllWeddingQuotation, editQuotationList } from '../services/Api';
 
 const WeddingQuatation = (props) => {
+  const prop = props.obj;
   const [quotationObj, setQuotationObj] = useState({
-    "lastUpdatedBy": props.obj.lastUpdatedBy,
-    "weddingId": props.obj.weddingId,
-    "customerId": props.obj.customerId,
-    "customerName":props.obj.customerName,
-    "eventDate": props.obj.eventDate,
-    "arrivalTime":props.obj.arrivalTime,
-    "relieveTime":props.obj.relieveTime,
-    "totalAmount": props.obj.totalAmount,
-    "advanceAmount":props.obj.advanceAmount,
-    "details": props.obj.details,
-    "isDeleted": props.obj.isDeleted,
-    "pContact": props.obj.pContact,
-    "sContact": props.obj.sContact,
-    "message": props.obj.message,
-    "bookingUId":props.obj.bookingUId,
-    "userId": props.obj.userId,
-    "result": props.obj.result,
-    "isConfermed": props.obj.isConfermed,
-    "confirmDate": props.obj.confirmDate,
-    "reason":props.obj.reason ,
-    "venue": props.obj.venue,
-    "sgst": props.obj.sgst,
-    "cgst": props.obj.cgst,
-    "discount": props.obj.discount,
-    "isAlacarte": props.obj.isAlacarte,
-    "weddingPackageId": props.obj.weddingPackageId,
-    "weddingDetails": props.obj.weddingDetails,
+    "lastUpdatedBy": prop.lastUpdatedBy,
+    "weddingId": prop.weddingId,
+    "customerId": prop.customerId,
+    "customerName": prop.customerName,
+    "eventDate": prop.eventDate,
+    "arrivalTime": prop.arrivalTime,
+    "RelieveTime": prop.relieveTime,
+    "totalAmount": prop.totalAmount,
+    "advanceAmount": prop.advanceAmount,
+    "details": prop.details,
+    "isDeleted": prop.isDeleted,
+    "pContact": prop.pContact,
+    "sContact": prop.sContact,
+    "message": prop.message,
+    "bookingUId": prop.bookingUId,
+    "userId": prop.userId,
+    "result": prop.result,
+    "isConfermed": prop.isConfermed,
+    "confirmDate": prop.confirmDate,
+    "reason": prop.reason,
+    "venue": prop.venue,
+    "sgst": prop.sgst,
+    "cgst": prop.cgst,
+    "discount": prop.discount,
+    "isAlacarte": prop.isAlacarte,
+    "weddingPackageId": prop.weddingPackageId,
+    "weddingDetails": prop.weddingDetails,
     "extraWeddingDetails": [
       {
         "detailId": 0,
@@ -71,9 +72,9 @@ const WeddingQuatation = (props) => {
   const handleInputChange = (event, key) => {
     setQuotationObj(prevobj => ({ ...prevobj, [key]: event.target.value }))
   }
-  const handleCheckboxChange = (event,key) => {
+  const handleCheckboxChange = (event, key) => {
     // setMenuCartChecked(event.target.checked);
-    setQuotationObj((prev)=>({...prev,[key]: event.target.checked}))
+    setQuotationObj((prev) => ({ ...prev, [key]: event.target.checked }))
   };
   const handleCheckedChange = (event) => {
     setIsChecked(event.target.checked);
@@ -165,7 +166,7 @@ const WeddingQuatation = (props) => {
                   <div className='col-4 pt-4'>
                     <div className="form-check">
                       <label className="form-check-label" > Is AL-Carte</label>
-                      <input className="form-check-input" type="checkbox" checked={quotationObj.isAlacarte} onChange={(event)=>handleCheckboxChange(event,'isAlacarte')} />
+                      <input className="form-check-input" type="checkbox" checked={quotationObj.isAlacarte} onChange={(event) => handleCheckboxChange(event, 'isAlacarte')} />
                     </div>
                   </div>
                   <div className='col-4'>
@@ -182,7 +183,7 @@ const WeddingQuatation = (props) => {
                   </div>
                   <div className='col-4'>
                     <label>Event Date:</label>
-                    <input type="date" value={quotationObj.eventDate} onChange={(event) => handleInputChange(event, 'eventDate')} className='form-control' />
+                    <input type="date" value={quotationObj.eventDate.split('T')[0]} onChange={(event) => handleInputChange(event, 'eventDate')} className='form-control' />
                   </div>
                 </div>
                 <div className='row pt-3'>
@@ -192,8 +193,8 @@ const WeddingQuatation = (props) => {
                     <input type='time' value={quotationObj.arrivalTime} onChange={(event) => handleInputChange(event, 'arrivalTime')} className='form-control' />
                   </div>
                   <div className='col-4'>
-                    <label>RelieveT ime:</label>
-                    <input type='time' value={quotationObj.relieveTime} onChange={(event) => handleInputChange(event, 'relieveTime')} className='form-control' />
+                    <label>Relieve Time:</label>
+                    <input type='time' value={quotationObj.RelieveTime} onChange={(event) => handleInputChange(event, 'RelieveTime')} className='form-control' />
                   </div>
                   <div className='col-4'>
                     <label>Venue:</label>
@@ -230,12 +231,12 @@ const WeddingQuatation = (props) => {
                   <div className='col-6 pt-3'>
                     <div className="form-check">
                       <label className="form-check-label"> Is Confirmed</label>
-                      <input className="form-check-input" type="checkbox" checked={quotationObj.isConfermed} onChange={(event)=>handleCheckboxChange(event,'isConfermed')} />
+                      <input className="form-check-input" type="checkbox" checked={quotationObj.isConfermed} onChange={(event) => handleCheckboxChange(event, 'isConfermed')} />
                     </div>
                   </div>
                   <div className='col-4'>
                     <label className='align-item-start'>Confirm Date:</label>
-                    <input type='date'value={quotationObj.confirmDate} onChange={(event) => handleInputChange(event, 'confirmDate')} className='form-control' />
+                    <input type='date' value={quotationObj.confirmDate.split('T')[0]} onChange={(event) => handleInputChange(event, 'confirmDate')} className='form-control' />
                   </div>
                 </div>
                 <div className='Row'>
@@ -249,77 +250,77 @@ const WeddingQuatation = (props) => {
             </div>
           </div>
           <div className='col-6'>
-          {quotationObj.isAlacarte && (
-          <div className='col-12'>
-            <div className='card'>
-            <div className='bg-primary text-white text-center border-dark'>
-              <h4> <strong>Service Data List</strong></h4> 
-               </div>
-              <div className='card-header '>
-                <div className='row'>
-                  <div className='col-6'>
-                    <label>ServiceName</label>
-                    <select className="form-select" aria-label="Default select example" onChange={(event) => { UpdateServiceForm(event, 'serviceId') }}>
-                      <option>Select</option>
-                      {
-                        serviceDataList.map((item) => {
-                          return (<option value={item.serviceId}>{item.name}</option>)
-                        })
-                      }
-                    </select>
+            {quotationObj.isAlacarte && (
+              <div className='col-12'>
+                <div className='card'>
+                  <div className='bg-primary text-white text-center border-dark'>
+                    <h4> <strong>Service Data List</strong></h4>
                   </div>
-                  <div className='col-6'>
-                    <label>Rate</label>
-                    <input type='text' onChange={(event) => { UpdateServiceForm(event, 'rate') }} className='form-control' />
+                  <div className='card-header '>
+                    <div className='row'>
+                      <div className='col-6'>
+                        <label>ServiceName</label>
+                        <select className="form-select" aria-label="Default select example" onChange={(event) => { UpdateServiceForm(event, 'serviceId') }}>
+                          <option>Select</option>
+                          {
+                            serviceDataList.map((item) => {
+                              return (<option value={item.serviceId}>{item.name}</option>)
+                            })
+                          }
+                        </select>
+                      </div>
+                      <div className='col-6'>
+                        <label>Rate</label>
+                        <input type='text' onChange={(event) => { UpdateServiceForm(event, 'rate') }} className='form-control' />
+                      </div>
+                    </div>
+                    <div className='row'>
+                      <div className='col-6'>
+                        <label>No Of Pax</label>
+                        <input type='text' onChange={(event) => { UpdateServiceForm(event, 'noOfPax') }} className='form-control' />
+                      </div>
+                      <div className='col-6'>
+                        <label>Requirment</label>
+                        <input type='text' onChange={(event) => { UpdateServiceForm(event, 'requirment') }} className='form-control' />
+                      </div>
+                    </div>
+                    <div className='row'>
+                      <div className='col-6'>
+                        <label>Total</label>
+                        <input type='text' onChange={(event) => { UpdateServiceForm(event, 'total') }} className='form-control' />
+                      </div>
+                      <div className='col-6 pt-4'>
+                        <button className="btn btn-primary" onClick={addServiceData}>Add</button>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className='row'>
-                  <div className='col-6'>
-                    <label>No Of Pax</label>
-                    <input type='text' onChange={(event) => { UpdateServiceForm(event, 'noOfPax') }} className='form-control' />
-                  </div>
-                  <div className='col-6'>
-                    <label>Requirment</label>
-                    <input type='text' onChange={(event) => { UpdateServiceForm(event, 'requirment') }} className='form-control' />
-                  </div>
-                </div>
-                <div className='row'>
-                  <div className='col-6'>
-                    <label>Total</label>
-                    <input type='text' onChange={(event) => { UpdateServiceForm(event, 'total') }} className='form-control' />
-                  </div>
-                  <div className='col-6 pt-4'>
-                    <button className="btn btn-primary" onClick={addServiceData}>Add</button>
+                  <div className='card-body'>
+                    <table className='table table-bordered'>
+                      <thead>
+                        <tr>
+                          <th>serviceId</th>
+                          <th>rate</th>
+                          <th>No Of Pax</th>
+                          <th>Requirement</th>
+                          <th>total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {quotationObj.weddingDetails.map((item, index) => (
+                          <tr key={index}>
+                            <td>{item.serviceId}</td>
+                            <td>{item.rate}</td>
+                            <td>{item.noOfPax}</td>
+                            <td>{item.requirment}</td>
+                            <td>{item.total}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
-              <div className='card-body'>
-                <table className='table table-bordered'>
-                  <thead>
-                    <tr>
-                      <th>serviceId</th>
-                      <th>rate</th>
-                      <th>No Of Pax</th>
-                      <th>Requirement</th>
-                      <th>total</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {quotationObj.weddingDetails.map((item, index) => (
-                      <tr key={index}>
-                        <td>{item.serviceId}</td>
-                        <td>{item.rate}</td>
-                        <td>{item.noOfPax}</td>
-                        <td>{item.requirment}</td>
-                        <td>{item.total}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        )}
+            )}
           </div>
         </div>
       </div>
