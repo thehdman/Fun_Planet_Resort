@@ -18,22 +18,20 @@ const WeddingQuatation = (props) => {
     "isDeleted": props.obj.isDeleted,
     "pContact": props.obj.pContact,
     "sContact": props.obj.sContact,
-    "message": "",
-    "bookingUId": "",
-    "userId": 0,
-    "result": true,
-    "isConfermed": "",
-    "confirmDate": "",
-    "reason": "",
+    "message": props.obj.message,
+    "bookingUId":props.obj.bookingUId,
+    "userId": props.obj.userId,
+    "result": props.obj.result,
+    "isConfermed": props.obj.isConfermed,
+    "confirmDate": props.obj.confirmDate,
+    "reason":props.obj.reason ,
     "venue": props.obj.venue,
     "sgst": props.obj.sgst,
     "cgst": props.obj.cgst,
-    "discount": 0,
+    "discount": props.obj.discount,
     "isAlacarte": props.obj.isAlacarte,
     "weddingPackageId": props.obj.weddingPackageId,
-    "weddingDetails": [
-
-    ],
+    "weddingDetails": props.obj.weddingDetails,
     "extraWeddingDetails": [
       {
         "detailId": 0,
@@ -73,8 +71,9 @@ const WeddingQuatation = (props) => {
   const handleInputChange = (event, key) => {
     setQuotationObj(prevobj => ({ ...prevobj, [key]: event.target.value }))
   }
-  const handleCheckboxChange = (event) => {
-    setMenuCartChecked(event.target.checked);
+  const handleCheckboxChange = (event,key) => {
+    // setMenuCartChecked(event.target.checked);
+    setQuotationObj((prev)=>({...prev,[key]: event.target.checked}))
   };
   const handleCheckedChange = (event) => {
     setIsChecked(event.target.checked);
@@ -166,7 +165,7 @@ const WeddingQuatation = (props) => {
                   <div className='col-4 pt-4'>
                     <div className="form-check">
                       <label className="form-check-label" > Is AL-Carte</label>
-                      <input className="form-check-input" type="checkbox" checked={menuCartChecked} onChange={handleCheckboxChange} />
+                      <input className="form-check-input" type="checkbox" checked={quotationObj.isAlacarte} onChange={(event)=>handleCheckboxChange(event,'isAlacarte')} />
                     </div>
                   </div>
                   <div className='col-4'>
@@ -231,7 +230,7 @@ const WeddingQuatation = (props) => {
                   <div className='col-6 pt-3'>
                     <div className="form-check">
                       <label className="form-check-label"> Is Confirmed</label>
-                      <input className="form-check-input" type="checkbox" checked={isChecked} onChange={handleCheckedChange} />
+                      <input className="form-check-input" type="checkbox" checked={quotationObj.isConfermed} onChange={(event)=>handleCheckboxChange(event,'isConfermed')} />
                     </div>
                   </div>
                   <div className='col-4'>
@@ -250,7 +249,7 @@ const WeddingQuatation = (props) => {
             </div>
           </div>
           <div className='col-6'>
-          {menuCartChecked && (
+          {quotationObj.isAlacarte && (
           <div className='col-12'>
             <div className='card'>
             <div className='bg-primary text-white text-center border-dark'>
@@ -308,7 +307,7 @@ const WeddingQuatation = (props) => {
                   <tbody>
                     {quotationObj.weddingDetails.map((item, index) => (
                       <tr key={index}>
-                        <td>{item.name}</td>
+                        <td>{item.serviceId}</td>
                         <td>{item.rate}</td>
                         <td>{item.noOfPax}</td>
                         <td>{item.requirment}</td>
