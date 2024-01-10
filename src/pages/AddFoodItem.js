@@ -130,12 +130,12 @@ function AddFoodItem() {
     <Container fluid >
       <Row className='row'>
         <Col md={9}>
-          <Card className='shadow mt-1'>
-            <CardHeader className='bg-primary'>
+          <Card className='shadow mt-3'>
+            <CardHeader className=' bg-primary'>
               <strong className='text-white'>Food Menu</strong>
             </CardHeader>
             <CardBody>
-              <Table bordered>
+              <Table bordered >
                 <thead>
                   <tr>
                     <th>Sr No</th>
@@ -170,28 +170,28 @@ function AddFoodItem() {
                     {
                       itemList.map((item, index) => {
                         return <tr>
-                          <th>{index + 1}</th>
-                          <th>{item.itemName}</th>
-                          <th>{item.foodItemName}</th>
+                          <td>{index + 1}</td>
+                          <td>{item.itemName}</td>
+                          <td>{item.foodItemName}</td>
                           {
-                            item.isVeg && <th className='text-success'>Veg</th>
+                            item.isVeg && <td>Veg</td>
                           }
                           {
-                            !item.isVeg && <th className='text-danger'>Non-Veg</th>
+                            !item.isVeg && <td>Non-Veg</td>
                           }
                           {
-                            item.isAvailable && <th className='text-success'>Available</th>
+                            item.isAvailable && <td>Available</td>
                           }
                           {
-                            !item.isAvailable && <th className='text-danger'>Not-Available</th>
+                            !item.isAvailable && <td>Not-Available</td>
                           }
-                          <th>{item.fullPrice} Rs</th>
-                          <th>
-                            <Button onClick={() => handleUpdate(item)} outline color='warning'>Edit</Button>
-                          </th>
-                          <th>
-                            <Button onClick={() => handleDelete(item)} outline color='danger'>Delete</Button>
-                          </th>
+                          <td>{item.fullPrice} Rs</td>
+                          <td>
+                            <Button size='sm' onClick={() => handleUpdate(item)} color='success'>Edit</Button>
+                          </td>
+                          <td>
+                            <Button size='sm' onClick={() => handleDelete(item)} color='danger'>Delete</Button>
+                          </td>
                         </tr>
                       })
                     }
@@ -203,7 +203,7 @@ function AddFoodItem() {
         </Col>
 
         <Col md={3}>
-          <Card className="shadow mt-1">
+          <Card className="shadow mt-3">
             <CardHeader className="bg-primary">
               {
                 isSave && <strong className='text-white'>Add Food Item</strong>
@@ -290,16 +290,16 @@ function AddFoodItem() {
             <CardFooter >
               <Row>
                 <Col>
-                  <Button outline color='secondary' onClick={handleReset}>Reset</Button>
+                  <Button size='sm' color='secondary' onClick={handleReset}>Reset</Button>
                 </Col>
                 {
                   isSave && <Col>
-                    <Button outline color='success' onClick={handleSave}>Save</Button>
+                    <Button size='sm' color='success' onClick={handleSave}>Save</Button>
                   </Col>
                 }
                 {
                   isUpdate && <Col>
-                    <Button outline color='warning' onClick={handleSave}>Update</Button>
+                    <Button size='sm' color='warning' onClick={handleSave}>Update</Button>
                   </Col>
                 }
               </Row>

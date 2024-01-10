@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import { showRoomData, showRoomTypeData, showRoomStatus, addRoomData, editRoom, deleteRoom } from "../services/Api"
 
 const RoomCreation = () => {
@@ -7,6 +8,7 @@ const RoomCreation = () => {
     let [roomData, setRoomData] = useState([]);
     let [roomObj, setRoomObj] = useState({
         "roomId": 0,
+  
         "roomTypeId": 0,
         "roomNo": "",
         "totalBed": 0,
@@ -54,11 +56,11 @@ const RoomCreation = () => {
         setisFormSubmitted(true);
         addRoomData(roomObj).then((data) => {
             if (data.result) {
-                alert('Room Added Successfully');
+                toast.success('Room Added Successfully');
                 showAllRoomData();
             }
             else {
-                alert(data.message);
+                toast.error(data.message);
             }
         })
     }
@@ -84,11 +86,11 @@ const RoomCreation = () => {
             else {
                 setisFormSubmitted(true);
                 if (data.result) {
-                    alert('Room Data Updated Successfully');
+                    toast.success('Room Data Updated Successfully');
                     showAllRoomData();
                 }
                 else {
-                    alert(data.message);
+                    toast.error(data.message);
                 }
             }
         })
@@ -97,11 +99,11 @@ const RoomCreation = () => {
     const deleteRoomData = (obj) => {
         deleteRoom(obj).then((data) => {
             if (data.result) {
-                alert('Room Data Deleted Successfully');
+                toast.success('Room Data Deleted Successfully');
                 showAllRoomData();
             }
             else {
-                alert(data.message)
+                toast.error(data.message)
             }
         })
     }
