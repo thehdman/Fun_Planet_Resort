@@ -271,8 +271,8 @@ const addAllWeddingQuotation = async (obj) => {
     }
 }
 
-const editQuotationList = async (obj) => {
-    const result = await axios.get(ApiUrl + Constant.EDIT_QUOTATION_List, obj);
+const editQuotationList = async (id) => {
+    const result = await axios.get(ApiUrl + Constant.EDIT_QUOTATION_List+id);
     return result.data
 }
 

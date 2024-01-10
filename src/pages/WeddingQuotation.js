@@ -3,23 +3,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { getServiceDataList, getWeddingPackagesList, addAllWeddingQuotation,editQuotationList } from '../services/Api';
 
-
 const WeddingQuatation = (props) => {
-
   const [quotationObj, setQuotationObj] = useState({
-    "lastUpdatedBy": 0,
-    "weddingId": 0,
-    "customerId": 0,
-    "customerName": "",
-    "eventDate": "",
-    "arrivalTime": "",
-    "relieveTime": "",
-    "totalAmount": 0,
-    "advanceAmount": 0,
-    "details": "",
-    "isDeleted": true,
-    "pContact": "",
-    "sContact": "",
+    "lastUpdatedBy": props.obj.lastUpdatedBy,
+    "weddingId": props.obj.weddingId,
+    "customerId": props.obj.customerId,
+    "customerName":props.obj.customerName,
+    "eventDate": props.obj.eventDate,
+    "arrivalTime":props.obj.arrivalTime,
+    "relieveTime":props.obj.relieveTime,
+    "totalAmount": props.obj.totalAmount,
+    "advanceAmount":props.obj.advanceAmount,
+    "details": props.obj.details,
+    "isDeleted": props.obj.isDeleted,
+    "pContact": props.obj.pContact,
+    "sContact": props.obj.sContact,
     "message": "",
     "bookingUId": "",
     "userId": 0,
@@ -27,12 +25,12 @@ const WeddingQuatation = (props) => {
     "isConfermed": "",
     "confirmDate": "",
     "reason": "",
-    "venue": "",
-    "sgst": 0,
-    "cgst": 0,
+    "venue": props.obj.venue,
+    "sgst": props.obj.sgst,
+    "cgst": props.obj.cgst,
     "discount": 0,
-    "isAlacarte": true,
-    "weddingPackageId": 0,
+    "isAlacarte": props.obj.isAlacarte,
+    "weddingPackageId": props.obj.weddingPackageId,
     "weddingDetails": [
 
     ],
@@ -48,6 +46,7 @@ const WeddingQuatation = (props) => {
       }
     ]
   })
+
   let [serviceData, setServiceData] = useState({
     "serviceId": '',
     "rate": '',
@@ -152,15 +151,15 @@ const WeddingQuatation = (props) => {
                 <div className='row'>
                   <div className='col-4'>
                     <label>Customer Name</label>
-                    <input type='text' onChange={(event) => handleInputChange(event, 'customerName')} className='form-control' />
+                    <input type='text' value={quotationObj.customerName} onChange={(event) => handleInputChange(event, 'customerName')} className='form-control' />
                   </div>
                   <div className='col-4'>
                     <label>Primary contact:</label>
-                    <input type='text' onChange={(event) => handleInputChange(event, 'pContact')} className='form-control' />
+                    <input type='text' value={quotationObj.pContact} onChange={(event) => handleInputChange(event, 'pContact')} className='form-control' />
                   </div>
                   <div className='col-4'>
                     <label>Secondary Contact:</label>
-                    <input type='text' onChange={(event) => handleInputChange(event, 'sContact')} className='form-control' />
+                    <input type='text' value={quotationObj.sContact} onChange={(event) => handleInputChange(event, 'sContact')} className='form-control' />
                   </div>
                 </div>
                 <div className='row'>
@@ -172,7 +171,7 @@ const WeddingQuatation = (props) => {
                   </div>
                   <div className='col-4'>
                     <label>Wedding Package</label>
-                    <select className="form-select" aria-label="Default select example" onChange={(event) => handleInputChange(event, 'weddingPackageId')} >
+                    <select className="form-select" value={quotationObj.weddingPackageId} aria-label="Default select example" onChange={(event) => handleInputChange(event, 'weddingPackageId')} >
                       <option>Select</option>
                       {
                         weddingPackageslist.map((item) => {
@@ -184,22 +183,22 @@ const WeddingQuatation = (props) => {
                   </div>
                   <div className='col-4'>
                     <label>Event Date:</label>
-                    <input type="date" onChange={(event) => handleInputChange(event, 'eventDate')} className='form-control' />
+                    <input type="date" value={quotationObj.eventDate} onChange={(event) => handleInputChange(event, 'eventDate')} className='form-control' />
                   </div>
                 </div>
                 <div className='row pt-3'>
 
                   <div className='col-4'>
                     <label>Arrival Time:</label>
-                    <input type='time' onChange={(event) => handleInputChange(event, 'arrivalTime')} className='form-control' />
+                    <input type='time' value={quotationObj.arrivalTime} onChange={(event) => handleInputChange(event, 'arrivalTime')} className='form-control' />
                   </div>
                   <div className='col-4'>
                     <label>RelieveT ime:</label>
-                    <input type='time' onChange={(event) => handleInputChange(event, 'relieveTime')} className='form-control' />
+                    <input type='time' value={quotationObj.relieveTime} onChange={(event) => handleInputChange(event, 'relieveTime')} className='form-control' />
                   </div>
                   <div className='col-4'>
                     <label>Venue:</label>
-                    <input type='text' onChange={(event) => handleInputChange(event, 'venue')} className='form-control' />
+                    <input type='text' value={quotationObj.venue} onChange={(event) => handleInputChange(event, 'venue')} className='form-control' />
                   </div>
 
                 </div>
@@ -207,25 +206,25 @@ const WeddingQuatation = (props) => {
                 <div className='row pt-3'>
                   <div className='col-4'>
                     <label>Total Amount:</label>
-                    <input type='text' onChange={(event) => handleInputChange(event, 'totalAmount')} className='form-control' />
+                    <input type='text' value={quotationObj.totalAmount} onChange={(event) => handleInputChange(event, 'totalAmount')} className='form-control' />
                   </div>
                   <div className='col-4'>
                     <label>Advance Amount:</label>
-                    <input type='text' onChange={(event) => handleInputChange(event, 'advanceAmount')} className='form-control' />
+                    <input type='text' value={quotationObj.advanceAmount} onChange={(event) => handleInputChange(event, 'advanceAmount')} className='form-control' />
                   </div>
                   <div className='col-4'>
                     <label>SGST:</label>
-                    <input type='text' onChange={(event) => handleInputChange(event, 'sgst')} className='form-control' />
+                    <input type='text' value={quotationObj.sgst} onChange={(event) => handleInputChange(event, 'sgst')} className='form-control' />
                   </div>
                 </div>
                 <div className='row'>
                   <div className='col-4'>
                     <label>CGST:</label>
-                    <input type='text' onChange={(event) => handleInputChange(event, 'cgst')} className='form-control' />
+                    <input type='text' value={quotationObj.cgst} onChange={(event) => handleInputChange(event, 'cgst')} className='form-control' />
                   </div>
                   <div className='col-4'>
                     <label>Discount:</label>
-                    <input type='text' onChange={(event) => handleInputChange(event, 'discount')} className='form-control' />
+                    <input type='text' value={quotationObj.discount} onChange={(event) => handleInputChange(event, 'discount')} className='form-control' />
                   </div>
                 </div>
                 <div className='row pt-3'>
@@ -237,7 +236,7 @@ const WeddingQuatation = (props) => {
                   </div>
                   <div className='col-4'>
                     <label className='align-item-start'>Confirm Date:</label>
-                    <input type='date' onChange={(event) => handleInputChange(event, 'confirmDate')} className='form-control' />
+                    <input type='date'value={quotationObj.confirmDate} onChange={(event) => handleInputChange(event, 'confirmDate')} className='form-control' />
                   </div>
                 </div>
                 <div className='Row'>

@@ -1,11 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { getQuotationList, deleteQuotationList, editQuotationList } from '../services/Api';
-
-
-const QuotationList = () => {
-    const [quotationList, setQuotationList,editQuotationList] = useState([]);
-
+import { useNavigate } from 'react-router-dom';
+const QuotationList = (props) => {
+    const [quotationList, setQuotationList] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         showQuotationDataList();
@@ -14,6 +13,7 @@ const QuotationList = () => {
     const showQuotationDataList = () => {
         getQuotationList().then((data) => {
             setQuotationList(data)
+            console.log(data);
         });
     }
     const deleteQuotationListData = (item)=>{
@@ -26,18 +26,17 @@ const QuotationList = () => {
             }
         })
     }
-    // const editQuotationListData =(id)=>{
-    //     editQuotationList(id).then((data)=>{
-    //       if(data.result){
-        
-    //       }
-    //       else{
-    //         alert(data.message)
-    //       }
-    
-    //     })
-    //   }
 
+    const editQuotationListData =(id)=>{
+        editQuotationList(id).then((data)=>{
+            const setQuotationObj=props.setEdit;
+            navigate('/WeddingQuotation')
+            setQuotationObj(data);
+            // console.log(result.data)
+    
+        })
+      }
+    
    
     return (
         <div>
@@ -74,7 +73,7 @@ const QuotationList = () => {
                                             <td>{item.pContact}</td>
                                             <td>{item.customerName}</td>
                                             <td>
-                                               <button  className='btn btn-sm btn-success' >Edit</button>
+                                               <button  className='btn btn-sm btn-success' onClick={()=>editQuotationListData(item.weddingId)} >Edit</button>
                                             </td>
                                             <td>
                                                 <button className='btn btn-sm btn-danger' onClick={()=>deleteQuotationListData(item)}>Delete</button>

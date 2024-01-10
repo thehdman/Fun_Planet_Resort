@@ -21,8 +21,11 @@ import Master from '../pages/Master';
 import WeddingService from '../pages/WeddingService';
 import Offer from '../pages/Offer';
 import Booking from '../pages/Booking';
+import { useState } from 'react';
 
 const AppRoutes = () => {
+    const [quotationObj, setQuotationObj] = useState({});
+
     return (
         <div>
                 <ToastContainer
@@ -49,8 +52,8 @@ const AppRoutes = () => {
                     <Route path='Roomtype' element={<Roomtype></Roomtype>}></Route>
                     <Route path='Enquiry' element={<Enquiry></Enquiry>}></Route>
                    
-                    <Route path='WeddingQuotation' element={<WeddingQuatation></WeddingQuatation>}></Route>
-                    <Route path='QuotationList' element={<QuotationList></QuotationList>}></Route>
+                    <Route path='WeddingQuotation' element={<WeddingQuatation obj={quotationObj}></WeddingQuatation>}></Route>
+                    <Route path='QuotationList' element={<QuotationList setEdit={setQuotationObj}></QuotationList>}></Route>
                     
                     <Route path='AddFoodItem' element={<AddFoodItem></AddFoodItem>}></Route>
                     <Route path='Services' element={<Services></Services>}></Route>
