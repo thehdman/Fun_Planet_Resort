@@ -236,7 +236,7 @@ const WeddingQuatation = (props) => {
                   </div>
                   <div className='col-4'>
                     <label className='align-item-start'>Confirm Date:</label>
-                    <input type='date' value={quotationObj.confirmDate.split('T')[0]} onChange={(event) => handleInputChange(event, 'confirmDate')} className='form-control' />
+                    <input type='date' value={quotationObj.confirmDate} onChange={(event) => handleInputChange(event, 'confirmDate')} className='form-control' />
                   </div>
                 </div>
                 <div className='Row'>

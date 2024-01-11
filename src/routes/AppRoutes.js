@@ -25,14 +25,15 @@ import { useState } from 'react';
 
 const AppRoutes = () => {
     const [quotationObj, setQuotationObj] = useState({
-        "weddingDetails":[],
-        "eventDate" :"2024-01-10T15:43:10.356Z",
+        "weddingDetails": [],
+        "eventDate": "2024-01-10T15:43:10.356Z",
+        "relieveTime": "string",
         "confirmDate": "2024-01-10T15:43:10.356Z"
     });
 
     return (
         <div>
-                <ToastContainer
+            <ToastContainer
                 position="top-right"
                 autoClose={3000}
                 hideProgressBar={false}
@@ -43,26 +44,26 @@ const AppRoutes = () => {
                 draggable
                 pauseOnHover
                 theme="colored"
-                ></ToastContainer>
+            ></ToastContainer>
             <BrowserRouter>
                 <Navbar></Navbar>
                 <Routes>
                     <Route path='RoomCreation' element={<RoomCreation></RoomCreation>}></Route>
                     <Route path='Login' element={<Login></Login>}></Route>
-            
+
 
                     <Route path='WeddingPackages' element={<WeddingPackages></WeddingPackages>}></Route>
                     <Route path='User' element={<User></User>}></Route>
                     <Route path='Roomtype' element={<Roomtype></Roomtype>}></Route>
                     <Route path='Enquiry' element={<Enquiry></Enquiry>}></Route>
-                   
+
                     <Route path='WeddingQuotation' element={<WeddingQuatation obj={quotationObj}></WeddingQuatation>}></Route>
                     <Route path='QuotationList' element={<QuotationList setEdit={setQuotationObj}></QuotationList>}></Route>
-                    
+
                     <Route path='AddFoodItem' element={<AddFoodItem></AddFoodItem>}></Route>
                     <Route path='Services' element={<Services></Services>}></Route>
-                    <Route path='Master' element={<Master/>}></Route>
-                    <Route path='WeddingService' element={<WeddingService/>}></Route>
+                    <Route path='Master' element={<Master />}></Route>
+                    <Route path='WeddingService' element={<WeddingService />}></Route>
                     <Route path='Offer' element={<Offer></Offer>}></Route>
                     <Route path='Booking' element={<Booking></Booking>}></Route>
                 </Routes>
