@@ -45,10 +45,45 @@ const addRoomData = async (obj) => {
         alert(error.code)
     }
 }
-const getLogin = async (obj) => {
-    const result = await axios.post(ApiUrl + Constant.GET_LOGIN, obj);
+
+const getFoodItemType = async () => {
+    const result = await axios.get(ApiUrl + Constant.GET_ALL_FOOD);
+    return result.data
+
+}
+const addFoodItem = async (Obj) => {
+    const result = await axios.post(ApiUrl + Constant.ADD_FOOD_ITEM, Obj)
+    
+     return result.data 
+}
+
+const getAllVisit = async (Obj) => {
+    const result = await axios.post(ApiUrl + Constant.GET_ALL_VISIT,Obj);
+    return result.data
+    
+}
+
+const addVisitdata = async (Obj) => {
+    const result = await axios.post(ApiUrl + Constant.ADD_VISIT_DATA,Obj)
+    
+    return result.data 
+}
+
+const getAllService = async()=> {
+    const result = await axios.get(ApiUrl + Constant.GET_ALL_SERVICES);
+    return result.data
+
+}
+
+const getsingalvisit = async (id) => {
+    const result = await axios.get(ApiUrl + Constant.GET_ALL_SINGALVISIT, id) 
     return result.data
 }
+
+const getLogin = async (obj) =>{
+        const result = await axios.post(ApiUrl + Constant.GET_LOGIN,obj);
+        return result.data
+}   
 
 const getWeddingList = async () => {
     try {
@@ -258,8 +293,8 @@ const addAllWeddingQuotation = async (obj) => {
     }
 }
 
-const editQuotationList = async (obj) => {
-    const result = await axios.get(ApiUrl + Constant.EDIT_QUOTATION_List, obj);
+const editQuotationList = async (id) => {
+    const result = await axios.get(ApiUrl + Constant.EDIT_QUOTATION_List, +id);
     return result.data
 }
 
@@ -446,7 +481,5 @@ const onEditBooking = async (id) => {
 };
 
 
-
-export { getLogin, showRoomData, SaveRoomtype, showRoomTypeData, getAllRoomType, UpdateRoomtype, showRoomStatus, addRoomData, editRoom, deleteRoom, getWedding, addWeddingService, updateService, onDeleteWedding, getMasterList, addMaster, updateMaster, onDeleteMaster, saveOffer, onDeleteOffer, updateOffer, getAllOffer, getServiceListBooking, saveBooking, deleteBooking, onEditBooking, updateBooking, getAllBooking, updateWedding, updateWeddingPackagesResort, showServicesData, addServicesData, DeleteService, SaveFoodItem, getFoodItemTypes, getFoodItemList, deleteFoodItem, getQuotationList, getServiceDataList, getWeddingPackagesList, addAllWeddingQuotation, editQuotationList, deleteQuotationList, getShowEnquiry, getUserList, getUserListResort, getReferenceList, getSubjectList, getEnquiryStatusList, saveEnquiry, onEditEnquiry, deleteenquiry, updateenquiry, getWeddingList, saveWedding, onDeleteWeddingPackages, saveUser, updateUser, onDeleteUser }
-
+export { getLogin, showRoomData,SaveRoomtype, showRoomTypeData,getAllRoomType, UpdateRoomtype,showRoomStatus, addRoomData, editRoom, deleteRoom, getWedding, addWeddingService, updateService, onDeleteWedding, getMasterList, addMaster, updateMaster, onDeleteMaster, saveOffer, onDeleteOffer, updateOffer, getAllOffer, getServiceListBooking, saveBooking, deleteBooking, onEditBooking, updateBooking, getAllBooking, updateWedding,updateWeddingPackagesResort, showServicesData, addServicesData, DeleteService, SaveFoodItem, getFoodItemTypes, getFoodItemList, deleteFoodItem , getQuotationList, getServiceDataList, getWeddingPackagesList, addAllWeddingQuotation, editQuotationList, deleteQuotationList,getShowEnquiry,getUserList,getUserListResort,getReferenceList, getSubjectList,getEnquiryStatusList,saveEnquiry,onEditEnquiry,deleteenquiry,updateenquiry,getWeddingList,saveWedding,onDeleteWeddingPackages,saveUser,updateUser,onDeleteUser, getFoodItemType,addFoodItem,getAllVisit,addVisitdata,getAllService,getsingalvisit}
 

@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from '../components/UI/Navbar'
 import RoomCreation from '../pages/RoomCreation';
+import Fooditem from '../pages/Fooditem';
+import VisitTable from '../pages/VisitTable';
 import Login from '../pages/Login';
 
 import WeddingPackages from '../pages/WeddingPackages';
@@ -41,6 +43,8 @@ const AppRoutes = () => {
                 <Navbar></Navbar>
                 <Routes>
                     <Route path='RoomCreation' element={<RoomCreation></RoomCreation>}></Route>
+                    <Route path='Fooditem' element={<Fooditem></Fooditem>}></Route>
+                    <Route path='VisitTable' element={<VisitTable></VisitTable>}></Route>
                     <Route path='Login' element={<Login></Login>}></Route>
             
 

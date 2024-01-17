@@ -1,5 +1,11 @@
 export const GET_ALL_ROOM = "GetAllRoom";
 export const GET_LOGIN ="Login";
+export const GET_ALL_FOOD ="GetAllFoodItemType";
+export const ADD_FOOD_ITEM ="AddFoodItem" ;
+export const GET_ALL_VISIT ="GetAllVisit";
+export const ADD_VISIT_DATA = "AddVisit";
+export const GET_ALL_SERVICES = "GetAllService";
+export const GET_ALL_SINGALVISIT ="GetSingleVisitByVisitId?visitId";
 export const GET_All_PACKAGES= "GetAllWeddingPackages";
 export const Get_All_User= "GetAllUser";
 export const Save_Wedding="CreateUpdateWeddingPackage";
@@ -27,7 +33,6 @@ export const GET_ALL_WEDDINGPACKAGE = "GetAllWeddingPackages?weddingPackageId=Pa
 export const ADD_WEDDING_QUOTATION = "Addwedding";
 export const EDIT_QUOTATION_List = "GetWeddingById?id=";
 export const DELETE_QUOTATION_List = "Deletewedding";
-export const ADD_FOOD_ITEM = "AddFoodItem";
 export const GET_ALL_FOOD_ITEM_TYPE = "GetAllFoodItemType";
 export const GET_FOOD_ITEM_LIST = "GetFoodItemList";
 export const DELETE_FOOD_ITEM = "DeleteFoodItem";
