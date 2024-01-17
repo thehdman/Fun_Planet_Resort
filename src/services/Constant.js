@@ -1,5 +1,5 @@
 export const GET_ALL_ROOM = "GetAllRoom";
-export const GET_LOGIN ="getLogin";
+export const GET_LOGIN ="Login";
 export const GET_All_PACKAGES= "GetAllWeddingPackages";
 export const Get_All_User= "GetAllUser";
 export const Save_Wedding="CreateUpdateWeddingPackage";
